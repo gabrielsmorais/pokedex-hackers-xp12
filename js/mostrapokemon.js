@@ -43,10 +43,23 @@ function populaModal(res) {
   const modalBody = document.createElement('div');
   modalBody.classList.add('modal-body');
   modalContent.appendChild(modalBody);
+  const modalImage = document.createElement('div');
+  modalImage.classList.add('modal-image');
+  console.log(`${res.sprites.front_default}`)
+  modalImage.innerHTML = "<img src=" + `${res.sprites.front_default}` + " />";
+  modalContent.appendChild(modalImage);
   const modalP = document.createElement('p');
-  modalP.innerHTML = `${res.name} ${res.types.type} Peso:${res.weight} Altura:${res.height} Id:${res.id}`;
+  modalP.innerHTML = `Name: ${res.name} Peso: ${res.weight} Altura: ${res.height} Id: ${res.id}`;
   modalContent.appendChild(modalP);
+  for (let index = 0; index < res.types.length; index++) {
+    console.log(res.types.length);
+    var modalPTipo = document.createElement('p');
+      let type = res.types[index].type.name;
+      modalPTipo.innerHTML = `Type: ${type}`;
+      modalContent.appendChild(modalPTipo);
+  }
 }
+
   //     (http://getbootstrap.com/docs/4.0/components/modal/#modal-components)
   //  2. LINKAR TODOS OS COMPONENTES COM O MODAL .modal
   //  3. SEMPRE QUE FECHAR O MODAL LIMPAR O CONTEUDO ADICIONADO
